@@ -1,0 +1,398 @@
+<!-- filepath: /c:/Users/adars.LAPTOP-T806JFGT/OneDrive/Documents/python gjandp/django_tutorial/templates/about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    {% load static %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            background: #111;
+            color: white;
+            flex-direction: column; /* Change to column for mobile */
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #000;
+            padding: 30px;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            color: orange;
+            text-align: center;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar nav ul li {
+            margin: 20px 0;
+        }
+
+        .sidebar nav ul li a {
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+            padding: 8px 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar nav ul li a:hover {
+            background: orange;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .main-content {
+            margin-left: 270px;
+            padding: 50px;
+            width: calc(100% - 270px);
+        }
+
+        h1 {
+            font-size: 30px;
+            color: orange;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skills {
+            margin-top: 20px;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background: #333;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .fill {
+            height: 10px;
+            background: orange;
+            border-radius: 5px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            background: orange;
+            color: black;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background: white;
+            color: black;
+        }
+
+        /* New Section Styling */
+        .section {
+            margin-top: 50px;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            color: orange;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+        }
+
+        .card h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #bbb;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: orange;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            position: relative;
+            background: #222;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 45%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 20px;
+            right: -20px;
+            border: 10px solid transparent;
+            border-left-color: #222;
+            border-right: 0;
+            border-bottom: 0;
+            margin-top: -5px;
+            margin-left: -5px;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 55%;
+        }
+
+        .timeline-item.left::after {
+            left: -20px;
+            right: auto;
+            border-left-color: transparent;
+            border-right-color: #222;
+        }
+
+        .timeline-item h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: #bbb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 180px;
+            }
+
+            .main-content {
+                margin-left: 200px;
+                padding: 20px;
+                width: calc(100% - 200px);
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                margin-left: 0 !important;
+            }
+
+            .timeline::before {
+                left: 0;
+                width: 2px;
+                margin-left: 0;
+            }
+
+            .timeline-item::after {
+                left: auto;
+                right: -10px;
+                border-left-color: #222;
+                border-right-color: transparent;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+                width: 100%;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                margin-left: 0 !important;
+            }
+
+            .timeline::before {
+                left: 0;
+                width: 2px;
+                margin-left: 0;
+            }
+
+            .timeline-item::after {
+                left: auto;
+                right: -10px;
+                border-left-color: #222;
+                border-right-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <a ><B><center><H4>PORTFOLIO</H4><center></B></a>
+        <nav>
+            <ul>
+                <li><a href="{% url 'index' %}">🏠 Home</a></li>
+                <li><a href="{% url 'about' %}">👤 About</a></li>
+                <li><a href="{% url 'services' %}">📋 Services</a></li>
+                <li><a href="{% url 'portfolio' %}">📁 Portfolio</a></li>
+                <li><a href="{% url 'contact' %}">💬 Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <h1>About Me</h1>
+        <br>    </br>
+        <p>I'm <b>Adarsh S</b>, a <span style="color: orange;">Web Developer</span>.</p>
+        <p>Enthusiastic software developer with a focus on data science and web development. Proficient in Python, Node.js, and Angular.!</p>
+
+        <div class="info-grid">
+            <p><b>🎂 Birthday:</b> 5 June 2004</p>
+            <p><b>📅 Age:</b> 20</p>
+            <p><b>🌍 Website:</b> NILL</p>
+            <p><b>📧 Email:</b> adarshsajeevan050604@gmail.com</p>
+            <p><b>🎓 Degree:</b> btech CSE(data science)</p>
+            <p><b>📞 Phone:</b> +91 7736608810</p>
+            <p><b>📍 City:</b>Kollam</p>
+            <p><b>💼 Freelance:</b> Available</p>
+        </div>
+
+        <div class="skills">
+            <h2>Skills</h2>
+            <p>HTML</p>
+            <div class="skill-bar"><div class="fill" style="width: 95%"></div></div>
+            <p>CSS</p>
+            <div class="skill-bar"><div class="fill" style="width: 95%"></div></div>
+            <p>C</p>
+            <div class="skill-bar"><div class="fill" style="width: 90%"></div></div>
+            <p>SQL</p>
+            <div class="skill-bar"><div class="fill" style="width: 90%"></div></div>
+            <p>JavaScript</p>
+            <div class="skill-bar"><div class="fill" style="width: 85%"></div></div>
+            <p>PHP</p>
+            <div class="skill-bar"><div class="fill" style="width: 85%"></div></div>
+            <p>Python</p>
+            <div class="skill-bar"><div class="fill" style="width: 80%"></div></div>
+            <p>Node.js</p>
+            <div class="skill-bar"><div class="fill" style="width: 50%"></div></div>
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <p>📅 2023 - 2027</p>
+                    <h3>Btech in Computer Science And Engineering(Data Science)</h3>
+                    <p>APJ Abdul Kalam Technological University.</p>
+                </div>
+                <div class="timeline-item right">
+                    <p>📅 2022 - 2024</p>
+                    <h3>Diploma in Computer Engineering</h3>
+                    <p>STATE BOARD OF TECHNICAL EDUCATION, KERALA.</p>
+                </div>
+                <div class="timeline-item left">
+                    <p>📅 2022</p>
+                    <h3>NATIONAL SKILL QUALIFICATION FRAMWORK(NSQF)</h3>
+                    <p>Ministry of Skill Development and Entrepreneurship (MSDE), Government of India.</p>
+                </div>
+                <div class="timeline-item right">
+                    <p>📅 2020 - 2022</p>
+                    <h3>Senior Secondary In Computer Science</h3>
+                    <p>The Directorate of Higher Secondary Education (DHSE).</p>
+                </div>
+                <div class="timeline-item left">
+                    <p>📅 2020</p>
+                    <h3>Secondary Education</h3>
+                    <p>Central Board of Secondary Education(CBSE).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <p>📅 13-07-2024 to 14-10-2024</p>
+                    <h3>Data Science With Python</h3>
+                    <p>Experienced in data analysis, visualization, machine learning, and automation using Python. Proficient in libraries like Pandas, NumPy, Matplotlib, and Scikit-learn for data-driven solutions.</p>
+                </div>
+                <div class="timeline-item right">
+                    <p>📅 01-05-2023 to 31-05-2023</p>
+                    <h3>Python Django Developer</h3>
+                    <p>Experienced in building scalable web applications using Django. Skilled in backend development, REST APIs, database management, and frontend integration for dynamic web solutions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="{% static 'cv/cv.pdf' %}" class="btn" download>📄 Download CV</a>
+            <a href="#" class="btn">💼 Hire Me</a>
+        </div>
+    </main>
+</body>
+</html>

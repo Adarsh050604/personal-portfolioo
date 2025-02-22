@@ -1,0 +1,260 @@
+<!-- filepath: /c:/Users/adars.LAPTOP-T806JFGT/OneDrive/Documents/python gjandp/django_tutorial/templates/portfolio.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    {% load static %}
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #000;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+            left: 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff0099;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .sidebar ul li {
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background: #ff0099;
+        }
+
+        /* Content Section */
+        .content {
+            margin-left: 240px;
+            padding: 40px;
+            width: calc(100% - 240px);
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .sub-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .project img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover img {
+            transform: scale(1.1);
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+            background: #292929;
+            box-shadow: 0 0 25px rgba(255, 0, 153, 0.7);
+        }
+
+        .description {
+            display: none;
+            background: #292929;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .github-link {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .github-link a {
+            color: #ff0099;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .github-link a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 180px;
+            }
+
+            .content {
+                margin-left: 200px;
+                padding: 20px;
+                width: calc(100% - 200px);
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 20px;
+                width: 100%;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a ><B><center><H4>PORTFOLIO</H4><center></B></a>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">🏠 Home</a></li>
+                    <li><a href="{% url 'about' %}">👤 About</a></li>
+                    <li><a href="{% url 'services' %}">📋 Services</a></li>
+                    <li><a href="#" class="active">💼 Portfolio</a></li>
+                    <li><a href="{% url 'contact' %}">💬 Contact</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <h1>Portfolio</h1>
+            <p class="sub-title">My Last Projects:</p>
+            <div class="portfolio-grid">
+                <div class="project" onclick="toggleDescription(this)">
+                    <img src="{% static 'images/image2.jpeg' %}" alt="Project 1">
+                    <div class="description">FACE MASK DETECTION USING AL AND ML</div>
+                    <p>An intelligent system using machine learning and computer vision to detect whether a person is wearing a mask, enhancing safety measures in public spaces.</p>
+                    <div class="github-link"><a href="https://github.com/username/project1" target="_blank">View Code on GitHub</a></div>
+                </div>
+                <div class="project" onclick="toggleDescription(this)">
+                    <img src="{% static 'images/image4.png' %}" alt="Project 2">
+                    <div class="description">SDG FOR CLASSROOM LEARNING WEBSITE</div>
+                    <p>A website that provides educational resources and tools to help students and teachers learn about the United Nations Sustainable Development Goals.</p>
+                    <div class="github-link"><a href="https://github.com/username/project2" target="_blank">View Code on GitHub</a></div>
+                </div>
+                <div class="project" onclick="toggleDescription(this)">
+                    <img src="{% static 'images/image5.png' %}" alt="Project 3">
+                    <div class="description">ATTENDANCE MANAGEMENT SYSTEM</div>
+                    <p>A web-based system that allows teachers to take attendance, track student attendance records, and generate reports.</p>
+                    <div class="github-link"><a href="https://github.com/username/project3" target="_blank">View Code on GitHub</a></div>
+                </div>
+                <div class="project" onclick="toggleDescription(this)">
+                    <img src="{% static 'images/project4.jpg' %}" alt="Project 4">
+                    <div class="description">Description of Project 4</div>
+                    <div class="github-link"><a href="https://github.com/username/project4" target="_blank">View Code on GitHub</a></div>
+                </div>
+                <div class="project" onclick="toggleDescription(this)">
+                    <img src="{% static 'images/project5.jpg' %}" alt="Project 5">
+                    <div class="description">Description of Project 5</div>
+                    <div class="github-link"><a href="https://github.com/username/project5" target="_blank">View Code on GitHub</a></div>
+                </div>
+                <div class="project" onclick="toggleDescription(this)">
+                    <img src="{% static 'images/project6.jpg' %}" alt="Project 6">
+                    <div class="description">Description of Project 6</div>
+                    <div class="github-link"><a href="https://github.com/username/project6" target="_blank">View Code on GitHub</a></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        function toggleDescription(element) {
+            const description = element.querySelector('.description');
+            const githubLink = element.querySelector('.github-link');
+            const isVisible = description.style.display === 'block';
+            description.style.display = isVisible ? 'none' : 'block';
+            githubLink.style.display = isVisible ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>

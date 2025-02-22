@@ -1,0 +1,39 @@
+[33mcommit ddba45b2fa506040e153f27da616a2bd9d54ca97[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Adarsh <adarsh050604@gmail.com>
+Date:   Fri Feb 21 19:30:34 2025 +0530
+
+    Initial commit
+
+ delete mode 100644 django_tutorial/db.sqlite3
+ delete mode 100644 django_tutorial/django_tutorial/.env
+ delete mode 100644 django_tutorial/django_tutorial/__init__.py
+ delete mode 100644 django_tutorial/django_tutorial/__pycache__/__init__.cpython-313.pyc
+ delete mode 100644 django_tutorial/django_tutorial/__pycache__/settings.cpython-313.pyc
+ delete mode 100644 django_tutorial/django_tutorial/__pycache__/urls.cpython-313.pyc
+ delete mode 100644 django_tutorial/django_tutorial/__pycache__/wsgi.cpython-313.pyc
+ delete mode 100644 django_tutorial/django_tutorial/asgi.py
+ delete mode 100644 django_tutorial/django_tutorial/settings.py
+ delete mode 100644 django_tutorial/django_tutorial/urls.py
+ delete mode 100644 django_tutorial/django_tutorial/wsgi.py
+ delete mode 100644 django_tutorial/home/__init__.py
+ delete mode 100644 django_tutorial/home/__pycache__/__init__.cpython-313.pyc
+ delete mode 100644 django_tutorial/home/__pycache__/admin.cpython-313.pyc
+ delete mode 100644 django_tutorial/home/__pycache__/apps.cpython-313.pyc
+ delete mode 100644 django_tutorial/home/__pycache__/forms.cpython-313.pyc
+ delete mode 100644 django_tutorial/home/__pycache__/models.cpython-313.pyc
+ delete mode 100644 django_tutorial/home/__pycache__/urls.cpython-313.pyc
+ delete mode 100644 django_tutorial/home/__pycache__/views.cpython-313.pyc
+ delete mode 100644 django_tutorial/home/admin.py
+ delete mode 100644 django_tutorial/home/apps.py
+ delete mode 100644 django_tutorial/home/forms.py
+ delete mode 100644 django_tutorial/home/migrations/0001_initial.py
+ delete mode 100644 django_tutorial/home/migrations/__init__.py
+ delete mode 100644 django_tutorial/home/migrations/__pycache__/0001_initial.cpython-313.pyc
+ delete mode 100644 django_tutorial/home/migrations/__pycache__/__init__.cpython-313.pyc
+ delete mode 100644 django_tutorial/home/models.py
+ delete mode 100644 django_tutorial/home/static/cv/cv.pdf
+ delete mode 100644 django_tutorial/home/static/images/image1.jpeg
+ delete mode 100644 django_tutorial/home/static/images/image2.jpeg
+ delete mode 100644 django_tutorial/home/static/images/image3.png
+ delete mode 100644 django_tutorial/home/static/images/image4.png
+ delete mode 100644 django_tutorial/home/static/images/image5.png
