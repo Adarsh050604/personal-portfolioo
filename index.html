@@ -1,0 +1,227 @@
+<!-- filepath: /c:/Users/adars.LAPTOP-T806JFGT/OneDrive/Documents/python gjandp/django_tutorial/templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    {% load static %}
+    <style>
+        /* Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: #000; /* Change background color to black */
+            display: flex;
+            height: 100vh;
+            flex-direction: column; /* Change to column for mobile */
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, rgb(104, 16, 95));
+            padding: 30px;
+            position: fixed;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            display: block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        nav ul li {
+            margin: 20px 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: flex;
+            align-items: center;
+            transition: 0.3s ease-in-out;
+            padding: 8px 10px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover, 
+        nav ul li.active a {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center content horizontally */
+            padding: 60px;
+            width: calc(100% - 280px);
+            flex-direction: column; /* Change to column for mobile */
+            text-align: center; /* Center text */
+        }
+
+        .intro {
+            max-width: 600px; /* Adjust width for mobile */
+            text-align: center; /* Center text for mobile */
+        }
+
+        .intro img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out; /* Add transition for smooth zoom effect */
+        }
+
+        .intro img:hover {
+            transform: scale(1.3); /* Increase zoom effect on hover */
+        }
+
+        .intro h1 {
+            font-size: 34px;
+            color: #fff; /* Change text color to white */
+        }
+
+        .intro .name {
+            font-family: cursive;
+            color: #6a11cb;
+            font-weight: bold;
+        }
+
+        .intro h2 {
+            font-size: 26px;
+            margin-top: 10px;
+            color: #fff; /* Change text color to white */
+        }
+
+        .intro .highlight {
+            color: #ff416c;
+            font-weight: bold;
+        }
+
+        .intro p {
+            font-size: 16px;
+            color: #aaa; /* Change text color to light gray */
+            margin: 15px 0;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 4px 10px rgba(255, 65, 108, 0.4);
+            border: none;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 15px rgba(255, 65, 108, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 180px;
+            }
+
+            .main-content {
+                margin-left: 200px;
+                padding: 20px;
+                width: calc(100% - 200px);
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .intro {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .intro {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <a ><B><center><H4>PORTFOLIO</H4><center></B></a>
+        <nav>
+            <ul>
+                <li class="active"><a href="{% url 'index' %}">🏠 Home</a></li>
+                <li><a href="{% url 'about' %}">👤 About</a></li>
+                <li><a href="{% url 'services' %}">📋 Services</a></li>
+                <li><a href="{% url 'portfolio' %}">📁 Portfolio</a></li>
+                <li><a href="{% url 'contact' %}">💬 Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="intro">
+            <img src="{% static 'images/image7.jpg' %}" alt="Profile Picture">
+            <h1>Hello, my name is <span class="name">Adarsh S</span></h1>
+            <h2>I'm a <span class="highlight">Software</span> Developer</h2>
+            <p>
+                Junior Software Developer | 
+                2nd-year Computer Science & Engineering (Data Science) student with skills in Python, Node.js, Angular, and R. Passionate about web development, data science, and building innovative solutions.
+            </p>
+            <button class="btn" onclick="window.location.href='{% url 'about' %}';">
+                More About Me
+            </button>
+        </div>
+    </main>
+</body>
+</html>
