@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.http import HttpResponse
 from .forms import ContactMessageForm
+import qrcode
+import io
 
 def index(request):
     return render(request, 'index.html')
@@ -42,3 +45,38 @@ def contact_view(request):
 
 def contact_success_view(request):
     return render(request, 'contact_success.html')
+
+def test_email(request):
+    send_mail(
+        'Test Email',
+        'This is a test email.',
+        'adarshsajeevan050604@gmail.com',
+        ['recipient@example.com'],
+        fail_silently=False,
+    )
+    return HttpResponse('Email sent successfully')
+
+def generate_qr_code(request, text):
+    # Generate QR code
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(text)
+    qr.make(fit=True)
+
+    # Create an image from the QR code
+    img = qr.make_image(fill='black', back_color='white')
+
+    # Save the image to a BytesIO object
+    buffer = io.BytesIO()
+    img.save(buffer, format="PNG")
+    buffer.seek(0)
+
+    # Return the image as an HTTP response
+    return HttpResponse(buffer, content_type="image/png")
+
+def qr_code_page(request):
+    return render(request, 'qr_code.html', {'text': 'Hello, World!'})

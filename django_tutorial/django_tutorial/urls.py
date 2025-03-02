@@ -26,4 +26,5 @@ urlpatterns = [
     path('portfolio/', views.portfolio, name='portfolio'),  # Portfolio Page
     path('contact/', views.contact_view, name='contact'),  # Contact Page
     path('contact/success/', views.contact_success_view, name='contact_success'),  # Contact Success Page
+    path('test-email/', views.test_email, name='test_email'),  # Test Email Page
 ]
